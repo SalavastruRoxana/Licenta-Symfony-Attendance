@@ -1,0 +1,37 @@
+security:
+    providers:
+        orm_user_provider:
+            entity:
+                class: App\Entity\User
+                property: email
+
+    firewalls:
+        dev:
+            pattern: ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+
+        main:
+            anonymous: true
+            lazy: true
+            provider: orm_user_provider
+            guard:
+                authenticators:
+                    - App\Security\AppAuthenticator
+                entry_point: App\Security\AppAuthenticator
+            logout:
+                path: logout
+
+        api:
+            pattern: ^/
+            stateless: true
+            guard:
+                authenticators:
+                    - App\Security\AppAuthenticator
+
+    access_control:
+        - { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/profile, roles: IS_AUTHENTICATED_FULLY }
+
+    encoders:
+        App\Entity\User:
+            algorithm: sha256
