@@ -1,0 +1,29 @@
+{% extends "layouts/admin-grid.html.twig" %}
+{% block title %} Pagina Institutiei {% endblock %}
+
+
+
+{% block content_stanga %}
+{% endblock %}
+
+{% block content_centru %}
+    <br></br>
+    <h1>Adauga Clasa:</h1>
+    {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class = "row">
+    <div class="col">
+        {{ form_row(form.nume) }}
+    </div>
+    </div>
+
+
+    {{ form_end(form) }}
+    <br></br>
+    <br></br>
+{% endblock %}
+{% block content_dreapta %}
+{% endblock %}

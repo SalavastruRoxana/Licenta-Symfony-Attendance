@@ -1,0 +1,15 @@
+{% extends "layouts/home-base.html.twig" %}
+
+{% block title %} Success Autentificare {% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/home-base.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+
+Register success {{ email }} ! Urmati linkul pentru a va conecta so inscrie prin intermediul codului primit de la
+    administratorul institutiei
+    <a href = "/login" role = "button" type="button" class="btn btn-dark">Conectare</a>
+
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "layouts/page-grid-not-logged.html.twig" %}
+{% block title %} Acasa {% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ 'css/home-base.css' }}" rel="stylesheet"/>
+{% endblock %}
+
+
+
+
+{% block content_pagina %}
+    <div class="container-content">
+    <h2>Digital Attendance</h2>
+    <h4>Un Sistem Web Pentru Efectuarea Prezentelor Online</h4>
+
+    <h5>Metoda clasica (strigatul catalogului) consuma timp, lucru ce a reprezentat mereu o problema pentru profesori</h5>
+        <img src="{{ asset('images/catalog.png') }}" alt = "catalog-scolar" style="width:75%;height:75%; max-width: 250px;">
+
+        <h5>Digital Attendance este un sistem web care are scopul de a efectua prezenta online si a
+        folosi toate metodele posibile de a face prezenta intr-un mod valid prin detectarea locatiei fiecarui student si
+        timpul de raspuns al acestuia.</h5>
+        <img src="{{ asset('images/digital-attendance.jpg') }}" alt = "catalog-scolar" style="width:85%;height:85%; max-width: 250px;">
+
+
+    </div>
+{% endblock %}

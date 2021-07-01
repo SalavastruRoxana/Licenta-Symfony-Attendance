@@ -1,0 +1,75 @@
+{% extends "layouts/student-grid.html.twig" %}
+{% block title %} Profil {% endblock %}
+
+{% block content_centru %}
+    <h2>Orarul pentru {{ classroom_name }}</h2>
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Luni</th>
+                <th scope="col">Marti</th>
+                <th scope="col">Miercuri</th>
+                <th scope="col">Joi</th>
+                <th scope="col">Vineri</th>
+                <th scope="col">Sambata</th>
+                <th scope="col">Duminica</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            {%  for s in schedule %}
+                    <tr>
+                        <th scope="row">
+                                {{ s.time }}
+                        </th>
+                        <td>
+                            {% if s.day == "luni" %}
+                                {{ s.subject }}
+                                ( {{ s.classroom }} )
+                            {% endif %}</td>
+                        </td>
+                        <td>
+                            {% if s.day == "marti" %}
+                                {{ s.subject }}
+                                ( {{ s.classroom }} )
+                            {% endif %}</td>
+                        </td>
+                        <td>
+                            {% if s.day == "miercuri" %}
+                                {{ s.subject }}
+                                ( {{ s.classroom }} )
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if s.day == "joi" %}
+                                {{ s.subject }}
+                                ( {{ s.classroom }} )
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if s.day == "vineri" %}
+                                {{ s.subject }}
+                                ( {{ s.classroom }} )
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if s.day == "sambata" %}
+                                {{ s.subject }}
+                                ( {{ s.classroom }} )
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if s.day == "duminica" %}
+                                {{ s.subject }}
+                                ( {{ s.classroom }} )
+                            {% endif %}
+                        </td>
+                    </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+{% endblock %}

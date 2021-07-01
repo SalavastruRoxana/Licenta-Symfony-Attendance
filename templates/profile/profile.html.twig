@@ -1,0 +1,22 @@
+{% extends "layouts/home-base.html.twig" %}
+{% block title %} Home Page {% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ 'css/home-base.css' }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+    {#{{ encore_entry_script_tags('') }} #}
+{% endblock %}
+
+{% block content %}
+Content page
+ {% if app.user %}
+     user is logged in
+ {% else %}
+      user is not logged in
+ {% endif %}
+
+{% endblock %}
+
+

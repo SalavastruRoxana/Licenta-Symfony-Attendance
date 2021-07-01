@@ -1,0 +1,36 @@
+{% extends "layouts/home-base.html.twig" %}
+
+{% block title %} Inregistrare {% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/home-base.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+    {#{{ encore_entry_script_tags('') }} #}
+{% endblock %}
+
+
+{% block content %}
+
+    <div class="container" >
+    Login
+    {{ form_start(form) }}
+    {% if form_errors(form) %}
+    <div class="my-custom-class-for-errors">
+         Email sau parola increcta!
+    </div>
+    {% endif %}
+    <div class="col" id="some-custom-id">
+        {{ form_row(form.email) }}
+    </div>
+    <div class="col" id="some-custom-id">
+        {{ form_row(form.password) }}
+    </div>
+
+    {{ form_end(form) }}
+    </div>
+    <br></br>
+    <br></br>
+
+{% endblock %}

@@ -1,0 +1,159 @@
+{% extends "layouts/admin-grid.html.twig" %}
+{% block title %} Pagina Institutiei {% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ 'css/scheduleTime.css' }}" rel="stylesheet"/>
+{% endblock %}
+
+
+{% block content_centru %}
+    <h3>Adauga o noua ora!</h3>
+    <form method="POST" class="form-floating">
+        <div class="mb-3">
+            <label for="floatingInput">Clasa</label>
+            <select class="form-select" aria-label="Default select example" name="clasa" id = "clasa">
+                {% for class in classes %}
+                <option value="{{ class.id }}" >{{ class.nume }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="floatingInput">Ziua</label>
+            <select class="form-select" aria-label="Default select example" name="ziua" >
+                <option value="luni" >Luni</option>
+                <option value="marti" >Marti</option>
+                <option value="miercuri" >Miercuri</option>
+                <option value="joi" >Joi</option>
+                <option value="vineri" >Vineri</option>
+                <option value="sambata" >Sambata</option>
+                <option value="duminica" >Duminica</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="floatingInput">Materia</label>
+            <select class="form-select" aria-label="Default select example" name = "materia">
+                {% for materia in materii %}
+                    <option value="{{ materia.nume }}">{{ materia.nume }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="floatingInput">Sala</label>
+            <input type="text" class="form-control" name="sala" id = "sala"  aria-describedby="emailHelp">
+        </div>
+
+        <div class="mb-3">
+            <label for="floatingInput">Intervalul orar</label>
+            <select class="form-select" aria-label="Default select example" name="ora_inceput">
+                {% for i in 7..19 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+
+            <select class="form-select" aria-label="Default select example" name = "minut_inceput">
+                {% set ore = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55' ] %}
+                {% for i in ore %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+
+
+            </select>
+
+            -
+            <select class="form-select" aria-label="Default select example" name="ora_sfarsit">
+                {% for i in 7..19 %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+
+            <select class="form-select" aria-label="Default select example" name = "minut_sfarsit">
+                {% set ore = ['00', '05', '10', '15', '20', '25', '30', '35', '40', '45', '50', '55' ] %}
+                {% for i in ore %}
+                    <option value="{{ i }}">{{ i }}</option>
+                {% endfor %}
+            </select>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Adauga</button>
+
+    </form>
+
+    {% for class in classes %}
+    <h4>{{ class.nume }}</h4>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col"></th>
+            <th scope="col">Luni</th>
+            <th scope="col">Marti</th>
+            <th scope="col">Miercuri</th>
+            <th scope="col">Joi</th>
+            <th scope="col">Vineri</th>
+            <th scope="col">Sambata</th>
+            <th scope="col">Duminica</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        {%  for s in schedule %}
+            {% if s.idClass == class.id %}
+        <tr>
+            <th scope="row">
+                    {% if s.idClass == class.id %}
+                {{ s.time }}
+                    {% endif %}
+            </th>
+            <td>
+                {% if s.day == "luni" %}
+                    {{ s.subject }}
+                    ( {{ s.classroom }} )
+                {% endif %}</td>
+            </td>
+            <td>
+                {% if s.day == "marti" %}
+                    {{ s.subject }}
+                    ( {{ s.classroom }} )
+                {% endif %}</td>
+            </td>
+            <td>
+                {% if s.day == "miercuri" %}
+                {{ s.subject }}
+                    ( {{ s.classroom }} )
+                {% endif %}
+            </td>
+            <td>
+                {% if s.day == "joi" %}
+                    {{ s.subject }}
+                    ( {{ s.classroom }} )
+                {% endif %}
+            </td>
+            <td>
+                {% if s.day == "vineri" %}
+                    {{ s.subject }}
+                    ( {{ s.classroom }} )
+                {% endif %}
+            </td>
+            <td>
+                {% if s.day == "sambata" %}
+                    {{ s.subject }}
+                    ( {{ s.classroom }} )
+                {% endif %}
+            </td>
+            <td>
+                {% if s.day == "duminica" %}
+                    {{ s.subject }}
+                    ( {{ s.classroom }} )
+                {% endif %}
+            </td>
+        </tr>
+            {% endif %}
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+
+{% endblock %}

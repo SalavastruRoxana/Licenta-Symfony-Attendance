@@ -1,0 +1,10 @@
+{% extends "layouts/admin-grid.html.twig" %}
+{% block title %} Pagina Institutiei {% endblock %}
+
+
+{% block content_centru %}
+    <h1>Editare clasa:</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}

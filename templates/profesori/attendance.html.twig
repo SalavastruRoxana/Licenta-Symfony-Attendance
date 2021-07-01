@@ -1,0 +1,49 @@
+{% extends "layouts/professor-grid.html.twig" %}
+{% block title %} Profil {% endblock %}
+
+
+{% block content_centru %}
+
+    <h3>Faceti prezenta la ora!</h3>
+    <form method="POST" class="form-floating" id = "prezenta">
+        <div class="mb-3">
+            <label for="floatingInput">Clasa</label>
+            <select class="form-select" aria-label="Default select example" name="clasa" id = "clasa">
+                {% for class in classes %}
+                    <option value="{{ class.id }}" >{{ class.nume }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="floatingInput">Materia</label>
+            <select class="form-select" aria-label="Default select example" name = "materia">
+                {% for subject in subjects %}
+                    <option value="{{ subject.id }}">{{ subject.nume }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class = "mb-3">
+            <label for="floatingInput">Latitudine</label>
+            <input type="text" id="pozitia-lat" name="lat" readonly>
+        </div>
+
+        <div class = "mb-3">
+            <label for="floatingInput">Longitudine</label>
+            <input type="text" id="pozitia-lon" name="lon" readonly>
+        </div>
+
+        <button class="btn btn-primary" id = "faceti-prezenta">Faceti prezenta!</button>
+    </form>
+
+{% endblock %}
+
+{% block content_stanga %}
+{% endblock %}
+
+{% block javascripts %}
+    <script src = "{{ asset('js-code/getLocation.js') }}"></script>
+
+{% endblock %}
+

@@ -1,0 +1,46 @@
+{% extends "layouts/student-grid.html.twig" %}
+{% block title %} Profil {% endblock %}
+
+{% block content_centru %}
+    <h2>Pagina de feedback</h2>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Materia</th>
+            <th scope="col">Nota</th>
+            <th scope="col">Observatii</th>
+            <th scope="col">Bonus</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for a in feedbackList %}
+            <tr>
+                        <th scope="row">
+                            {{ a.date }}
+                        </th>
+                <th scope="row">
+                    {{ a.subjectName }}
+                </th>
+                        <th scope="row">
+                            {% if a.mark != 0  %}
+                            {{ a.mark }}
+                            {% endif %}
+                        </th>
+                        <th scope="row">
+                            {{ a.remark }}
+                        </th>
+                        <th scope="row">
+                            {% if a.bonus != 0  %}
+                            {{ a.bonus }}
+                            {% endif %}
+                        </th>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+

@@ -1,0 +1,33 @@
+{% extends "layouts/professor-grid.html.twig" %}
+{% block title %} Profil {% endblock %}
+
+
+{% block content_centru %}
+    <h1>Materiile predate:</h1>
+    <table class="table table-success table-striped" id="subject">
+        <thead>
+        <tr>
+            <th scope="col">Nume Materie</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+        {% for materie in materii %}
+            <tr class="table-success">
+                <td class="table-success">
+                    {{ materie.nume }}
+                </td>
+                <td class="table-success" >
+                    <a href="/profs/subject/{{ materie.id }}" role="button" class="btn btn-primary" data-id="{{ materie.id }}">Editare</a>
+                </td>
+                <td class="table-success" id="clasa">
+                    <a href="/profs/subject/delete/{{ materie.id }}" role="button" class="btn btn-danger" data-id="{{ materie.id }}">Sterge</a>
+                </td>
+            </tr>
+        {% else %}
+            Nu aveti nici o materie
+        {% endfor %}
+    </table>
+
+
+{% endblock %}
+

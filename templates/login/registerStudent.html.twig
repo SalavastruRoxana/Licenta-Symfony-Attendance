@@ -1,0 +1,40 @@
+{% extends "layouts/page-grid-not-logged.html.twig" %}
+
+{% block title %} Inregistrare {% endblock %}
+
+{% block stylesheets %}
+    <link href="{{ asset('css/home-base.css') }}" rel="stylesheet"/>
+{% endblock %}
+
+{% block javascripts %}
+    {#{{ encore_entry_script_tags('') }} #}
+{% endblock %}
+
+
+{% block content %}
+    {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+        <div class="col mb-3 ">
+            {{ form_row(form.lastName) }}
+        </div>
+        <div class="col mb-3" id="some-custom-id">
+            {{ form_row(form.firstName) }}
+        </div>
+    <div class="col mb-3" id="some-custom-id">
+        {{ form_row(form.email) }}
+    </div>
+    <div class="col mb-3" id="some-custom-id">
+        {{ form_row(form.password) }}
+    </div>
+    <div class="col mb-3" id="some-custom-id">
+        {{ form_row(form.type) }}
+    </div>
+    <div class="col mb-3 " id="submit-btn">
+        {{ form_widget(form.save, { 'label': 'Inregistrare' }) }}
+    </div>
+    {{ form_end(form) }}
+
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "layouts/student-grid.html.twig" %}
+{% block title %} Profil {% endblock %}
+
+{% block content_centru %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+            <h5 class="card-title">    <h2>Bun venit! {{ app.user.lastname }} {{ app.user.firstname }}</h2>
+            </h5>
+            <p class="card-text"> Faceti parte din {{ class }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{{ univ }}</li>
+            <li class="list-group-item">{{ faculty }}</li>
+            <li class="list-group-item">Adresa contact: {{ email }}</li>
+            <li class="list-group-item">Numar de contact: {{ nrTel }}</li>
+        </ul>
+    </div>
+
+{% endblock %}
+

@@ -1,0 +1,76 @@
+{% extends "layouts/professor-grid.html.twig" %}
+{% block title %} Lista perzentei {% endblock %}
+
+
+{% block content_centru %}
+
+    <h3>Prezenta ({{ present }} prezenti)</h3>
+
+    {% if table is not null %}
+
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Student</th>
+                <th scope="col">Status</th>
+                <th scope="col">Distanta</th>
+                <th scope="col">Locatie</th>
+                <th scope="col">Timp de raspuns</th>
+                <th scope="col">Actiuni</th>
+
+                <th scope="col"></th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for a in table %}
+                <tr
+                {% if a.status == 'Valid' %}
+                    class="table-success"
+                {% else %}
+                    class="table-danger"
+                {% endif %}>
+                    <th scope="row">
+                        {{ a.student }}
+                    </th>
+                    <td>
+                        {{ a.status }}
+                    </td>
+                    <td>
+                        {% if a.locationExposure is not null %}
+                        {{ a.distance }} metri
+                        {% else %}
+                            Distanta necunoscuta
+                            {% endif %}
+                    </td>
+                    <td>
+                        {% if a.locationExposure is not null %}
+                        {{ a.locationExposure }}
+                        {% else %}
+                            ascunsa
+                        {% endif %}
+                    </td>
+                    <td>
+                        {{ a.hours }} ore, {{ a.min }} minute, {{ a.seconds }} secunde
+                    </td>
+                    <td>
+                        {% if a.status == 'Valid' %}
+                            <a href="/profs/attendanceList/invalidate/{{ a.id }}" role="button" class="btn btn-primary" data-id="{{ a.id }}" >Invalideaza</a>
+                        {% else %}
+                            <a href="/profs/attendanceList/validate/{{ a.id }}" role="button" class="btn btn-primary" data-id="{{ a.id }}" >Valideaza</a>
+                        {% endif %}
+                        <a href="/profs/attendanceList/feedbcak/{{ a.id }}" role="button" class="btn btn-primary" data-id="{{ a.id }}" >Ofera feedback</a>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% else %}
+        Nimeni prezent
+    {% endif %}
+
+{% endblock %}
+
+

@@ -1,0 +1,23 @@
+{% extends "layouts/page-grid.html.twig" %}
+{% block title %} Pagina Institutiei {% endblock %}
+
+
+
+{% block content_centru %}
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">Introduceti codul clasei:</h5>
+            <p class="card-text">Pentru a incepe sa folositi aplicatia in calitate de student, obtineti codul clasei universitatii din care faceti parte de la administratorul acesteia.</p>
+            <form method="POST" class="form-floating">
+                <div class="mb-3">
+                    <input class="form-control {% if error_invalid %}is-invalid{% endif %}" type="text" class="form-control" name="cod">
+                    {% if error_invalid %}<label for="floatingInputInvalid">Invalid input</label>{% endif %}
+                </div>
+                <button type="submit" class="btn btn-primary">Inscriere</button>
+
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+

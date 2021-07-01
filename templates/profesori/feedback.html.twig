@@ -1,0 +1,96 @@
+{% extends "layouts/professor-grid.html.twig" %}
+{% block title %} Feedback {% endblock %}
+
+{% block content_centru %}
+    <h2>Oferiti un feedback pentru {{ studentName }}:</h2>
+
+    <div class="container">
+    <form method="POST" class="form-floating was-invalidated">
+
+        <div class="mb-3">
+            <label for="floatingInput">Observatie (de tip text)</label>
+            <input type="text" class="form-control" name="remark" >
+        </div>
+
+        <div class="mb-3 ">
+            <label for="floatingInput">Nota</label>
+            <input type="text" class="form-control {% if mark_error is not null %}is-invalid {% endif %}" name="mark">
+            {% if mark_error is not null %}
+            <div class="invalid-feedback">Nota trebuie sa fie o valoare numerica ( ex: 10 / 5.54 / 8.12 )</div>
+            {% endif %}
+        </div>
+
+        <div class="mb-3">
+            <label for="floatingInput">Puncte Bonus</label>
+            <input type="text" class="form-control {% if bonus_error is not null %}is-invalid {% endif %} " name="bonus" >
+            {% if bonus_error is not null %}
+                <div class="invalid-feedback">Bonusul trebuie sa fie o valoare intreaga ( ex: 10 / 3 / 1 / 5 )</div>
+            {% endif %}
+        </div>
+        <button type="submit" class="btn btn-primary">Trimite</button>
+
+    </form>
+    </div>
+
+
+
+    <h2>Istoricul studentului:</h2>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Data</th>
+            <th scope="col">Nota</th>
+            <th scope="col">Observatii</th>
+            <th scope="col">Bonus</th>
+
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for a in feedbackList %}
+            <tr>
+                {% if a.noFeedback %}
+                    <th scope="row">
+                        {{ a.classDate }}
+                    </th>
+                    <th scope="row">
+                    </th>
+                <th scope="row">
+                    Fara Feedback
+                </th>
+                    <th scope="row">
+                    </th>
+                {% else %}
+
+                    {% if a.missing %}
+                        <th scope="row">
+                            {{ a.classDate }}
+                        </th>
+                        <th scope="row">
+                        </th>
+                        <th scope="row">
+                            Absent
+                        </th>
+                        <th scope="row">
+                        </th>
+                        {% else %}
+                    <th scope="row">
+                        {{ a.feedbackDate }}
+                    </th>
+                    <th scope="row">
+                        {{ a.mark }}
+                    </th>
+                            <th scope="row">
+                                {{ a.remark }}
+                            </th>
+                            <th scope="row">
+                                {{ a.bonus }}
+                            </th>
+                            {% endif %}
+                {% endif %}
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

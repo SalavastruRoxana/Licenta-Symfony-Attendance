@@ -1,0 +1,41 @@
+{% extends "layouts/admin-grid.html.twig" %}
+{% block title %} Pagina Institutiei {% endblock %}
+
+
+{% block content_centru %}
+
+    <h1>{{ univName }}</h1>
+    <h3>{{ facultyName }}</h3>
+    <h4>Numar de telefon: {{ nrTel }}</h4>
+    <h4>Email contact: {{ univEmail }}</h4>
+    <h3>Clase:</h3>
+    <table class="table table-success table-striped" id="clasa">
+        <thead>
+        <tr>
+            <th scope="col">Nume Clasa</th>
+            <th scope="col"></th>
+        </tr>
+        </thead>
+    {% for class in classes %}
+        <tr class="table-success">
+                <td class="table-success">
+                {{ class.nume }}
+                </td>
+            <td class="table-success" >
+                <a href="/editClass/{{ class.id }}" role="button" class="btn btn-primary" data-id="{{ class.id }}">Editare</a>
+            </td>
+            <td class="table-success" id="clasa">
+                <a href="#" role="button" class="btn btn-danger" data-id="{{ class.id }}">Sterge</a>
+            </td>
+        </tr>
+        {% else %}
+        Nu aveti nici o clasa
+    {% endfor %}
+    </table>
+
+{% endblock %}
+
+{# nu sterg scriptul #}
+{% block javascripts %}
+    <script src = "js-code/deleteClass.js"></script>
+{% endblock %}

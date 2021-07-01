@@ -1,0 +1,33 @@
+{% extends "layouts/admin-grid.html.twig" %}
+{% block title %} Pagina Institutiei {% endblock %}
+
+{% block content_centru %}
+    <h1>Administrare studenti:</h1>
+    <h4>Invita studenti in clase utilizand codurile asociate</h4>
+    {% for class in table %}
+        <h5> {{ class.className }} are codul {{ class.classCode }} ( {{ class.nrStudents }} inscrisi )</h5>
+    <table class="table table-success table-striped" id="student">
+        <thead>
+        <tr>
+            <th scope="col">Student</th>
+            <th scope="col">Email</th>
+            <th scope="col">Actiune</th>
+        </tr>
+        </thead>
+        {% for student in class.students %}
+            <tr class="table-success">
+                <td class="table-success">
+                    {{ student.studentName }}
+                </td>
+                <td class="table-success" >
+                    {{ student.studentEmail }}
+                </td>
+                <td class="table-success" id="student">
+                    <a href="/univ/student/{{ student.studentId }}" role="button" class="btn btn-danger" data-id="{{ student.studentId }}">Sterge </a>
+                </td>
+            </tr>
+            {% endfor %}
+    </table>
+    {% endfor %}
+{% endblock %}
+

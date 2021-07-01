@@ -1,0 +1,42 @@
+{% extends "layouts/student-grid.html.twig" %}
+{% block title %} Profil {% endblock %}
+
+{% block content_centru %}
+
+<div class="card" style="width: 18rem;">
+    {% if prof_name is null %}
+        <div class="card-header"> Nu Aveti nici o prezenta de efectuat
+        </div>
+        <div class="container-content">
+
+        </div>
+    {% else %}
+    <div class="card-header"> Profesorul {{ prof_name }} a solicitat prezenta la "{{ subject }}" la {{ date }}
+    </div>
+    <div class="container-content">
+    <form method="POST" class="form-floating" id = "prezenta">
+        <div class = "mb-3">
+            <label for="floatingInput">Latitudine</label>
+            <input type="text" id="pozitia-lat" name="lat" readonly>
+        </div>
+
+        <div class = "mb-3">
+            <label for="floatingInput">Longitudine</label>
+            <input type="text" id="pozitia-lon" name="lon" readonly>
+        </div>
+
+        <button class="btn btn-primary" id = "faceti-prezenta">Faceti prezenta!</button>
+    </form>
+    </div>
+    {% endif %}
+</div>
+<br></br>
+    <br></br><br></br>
+    <br></br>
+
+{% endblock %}
+
+{% block javascripts %}
+    <script src = "{{ asset('js-code/getLocation.js') }}"></script>
+
+{% endblock %}

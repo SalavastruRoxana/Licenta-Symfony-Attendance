@@ -1,0 +1,79 @@
+{% extends "layouts/professor-grid.html.twig" %}
+{% block title %} Profil {% endblock %}
+
+
+{% block content_centru %}
+
+    {% for class in classes %}
+        <h4>{{ class.nume }}</h4>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col"></th>
+                <th scope="col">Luni</th>
+                <th scope="col">Marti</th>
+                <th scope="col">Miercuri</th>
+                <th scope="col">Joi</th>
+                <th scope="col">Vineri</th>
+                <th scope="col">Sambata</th>
+                <th scope="col">Duminica</th>
+
+            </tr>
+            </thead>
+
+            <tbody>
+            {%  for s in schedule %}
+                {% if s.idClass == class.id %}
+                    <tr>
+                        <th scope="row">
+                            {% if s.idClass == class.id %}
+                                {{ s.time }}
+                            {% endif %}
+                        </th>
+                        <td>
+                            {% if s.day == "luni" %}
+                                {{ s.subject }}
+                            {% endif %}</td>
+                        </td>
+                        <td>
+                            {% if s.day == "marti" %}
+                                {{ s.subject }}
+                            {% endif %}</td>
+                        </td>
+                        <td>
+                            {% if s.day == "miercuri" %}
+                                {{ s.subject }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if s.day == "joi" %}
+                                {{ s.subject }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if s.day == "vineri" %}
+                                {{ s.subject }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if s.day == "sambata" %}
+                                {{ s.subject }}
+                            {% endif %}
+                        </td>
+                        <td>
+                            {% if s.day == "duminica" %}
+                                {{ s.subject }}
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endfor %}
+
+{% endblock %}
+
+{% block content_stanga %}
+{% endblock %}
+

@@ -1,0 +1,30 @@
+{% extends "layouts/professor-grid.html.twig" %}
+{% block title %} Materii {% endblock %}
+
+
+
+{% block content_stanga %}
+{% endblock %}
+
+{% block content_centru %}
+    <br class="add-break">
+    <br></br>
+    <h1>Noua materie:</h1>
+    {{ form_start(form) }}
+    <div class="my-custom-class-for-errors">
+        {{ form_errors(form) }}
+    </div>
+
+    <div class = "row">
+    <div class="col">
+        {{ form_row(form.nume) }}
+    </div>
+    </div>
+
+    {{ form_end(form) }}
+    <br></br><br></br><br></br>
+
+    </div>
+{% endblock %}
+{% block content_dreapta %}
+{% endblock %}

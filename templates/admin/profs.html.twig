@@ -1,0 +1,32 @@
+{% extends "layouts/admin-grid.html.twig" %}
+{% block title %} Pagina Institutiei {% endblock %}
+
+
+
+{% block content_centru %}
+
+    <h3>Invita profesori prin codul institutiei: {{ cod }}</h3>
+
+    <h3>Profesori disponibili:</h3>
+    <table class="table table-success table-striped" id="profs">
+        <thead>
+        <tr>
+            <th scope="col">Nume </th>
+            <th scope="col"> Email</th>
+        </tr>
+        </thead>
+        {% for p in profs %}
+            <tr class="table-success">
+                <td class="table-success">
+                    {{ p.name }}
+                </td>
+                <td class="table-success" >
+                    {{ p.email }}
+                </td>
+            </tr>
+        {% else %}
+            Nu aveti nici o clasa
+        {% endfor %}
+    </table>
+{% endblock %}
+

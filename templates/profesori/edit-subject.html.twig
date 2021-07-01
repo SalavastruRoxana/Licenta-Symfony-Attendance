@@ -1,0 +1,16 @@
+{% extends "layouts/professor-grid.html.twig" %}
+{% block title %} Pagina Professorului {% endblock %}
+
+
+{% block content_stanga %}
+{% endblock %}
+
+{% block content_centru %}
+    <h1>Editare materie:</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+{% block javascripts %}
+    <script src = "js-code/deleteClass.js"></script>
+{% endblock %}
